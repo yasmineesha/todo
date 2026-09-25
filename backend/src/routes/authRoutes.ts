@@ -1,13 +1,10 @@
 import { Router } from 'express';
-import {getTodos, createTodo, updateTodo, deleteTodo} from '../controllers/todoController';
-import { validateTodo, validateUpdateTodo} from '../middlewares/validator';
+import { register, login } from '../controllers/authController';
+import { validateRegister, validateLogin } from '../middlewares/validator';
 
 const router = Router();
 
-router.get('/', getTodos);
-
-router.post('/', validateTodo, createTodo);
-
-router.put('/:id', deleteTodo);
+router.post('/register', validateRegister, register);
+router.post('/login', validateLogin, login);
 
 export default router;
